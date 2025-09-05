@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1a56l5i85ikn"]
+
+[ext_resource type="Script" uid="uid://bxio1vc8e2utg" path="res://Game/Goal/Goal.cs" id="1_2g83m"]
+[ext_resource type="Texture2D" uid="uid://bf7j3ktp5e8kf" path="res://Assets/art/backgrounds/goal-top.png" id="1_g13t2"]
+[ext_resource type="Texture2D" uid="uid://cdenq2xm6cxvn" path="res://Assets/art/backgrounds/goal-bottom.png" id="2_2g83m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g83m"]
+size = Vector2(37, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp65e"]
+size = Vector2(37, 4)
+
+[node name="Goal" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_2g83m")
+
+[node name="BackNet" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Shape" type="CollisionPolygon2D" parent="BackNet"]
+z_index = 1
+position = Vector2(-15, -35)
+polygon = PackedVector2Array(-6, 31, 2, -31, 6, -31, -2, 31)
+
+[node name="FrontLine" type="StaticBody2D" parent="."]
+
+[node name="Shape" type="CollisionPolygon2D" parent="FrontLine"]
+z_index = 1
+position = Vector2(17, -35)
+polygon = PackedVector2Array(-6, 31, 2, -31, 6, -31, -2, 31)
+
+[node name="ScoreZone" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Shape" type="CollisionPolygon2D" parent="ScoreZone"]
+visible = false
+z_index = 1
+position = Vector2(1, -35)
+polygon = PackedVector2Array(-18, 31, -10, -31, 18, -31, 10, 31)
+
+[node name="TopFrame" type="Sprite2D" parent="."]
+position = Vector2(0, -66)
+texture = ExtResource("1_g13t2")
+centered = false
+offset = Vector2(-23, -59)
+
+[node name="Body" type="StaticBody2D" parent="TopFrame"]
+
+[node name="Shape" type="CollisionShape2D" parent="TopFrame/Body"]
+z_index = 1
+position = Vector2(4.5, -2)
+shape = SubResource("RectangleShape2D_2g83m")
+
+[node name="BottomFrame" type="Sprite2D" parent="."]
+texture = ExtResource("2_2g83m")
+centered = false
+offset = Vector2(-23, -125)
+
+[node name="Body" type="StaticBody2D" parent="BottomFrame"]
+
+[node name="Shape" type="CollisionShape2D" parent="BottomFrame/Body"]
+z_index = 1
+position = Vector2(-3.5, -2)
+shape = SubResource("RectangleShape2D_wp65e")

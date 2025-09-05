@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv0b6nq0ouv45"]
+
+[ext_resource type="Script" uid="uid://bc6apgvpj15f0" path="res://Game/Main.cs" id="1_w1egk"]
+[ext_resource type="PackedScene" uid="uid://27bji3bt8gxo" path="res://Game/Camera/Camera.tscn" id="2_rchnd"]
+[ext_resource type="PackedScene" uid="uid://csnkbiacajg7t" path="res://Game/World/World.tscn" id="3_rl4yr"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_w1egk")
+
+[node name="Camera" parent="." instance=ExtResource("2_rchnd")]
+position_smoothing_speed = 0.0
+
+[node name="World" parent="." instance=ExtResource("3_rl4yr")]
